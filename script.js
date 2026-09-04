@@ -57,6 +57,38 @@
   sections.forEach(function (section) { observer.observe(section); });
 })();
 
+/* ---------- Force resume download (Blob-based, works even in Safari) ---------- */
+(function () {
+  var link = document.getElementById('resume-download-link');
+  if (!link) return;
+
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    var url = link.getAttribute('href');
+    var filename = link.getAttribute('download') || 'resume.pdf';
+
+    fetch(url)
+      .then(function (res) {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.blob();
+      })
+      .then(function (blob) {
+        var blobUrl = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(blobUrl); }, 1000);
+      })
+      .catch(function () {
+        // Fallback: if fetch fails (e.g. opened via file:// without a server), just navigate to the file.
+        window.location.href = url;
+      });
+  });
+})();
+
 /* ---------- Theme toggle (light / dark) ---------- */
 (function () {
   var root = document.documentElement;
