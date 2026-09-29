@@ -19,6 +19,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#demo">Demo</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="RESUME_KENNETH_V_SARMIENTO.pdf" target="_blank" rel="noopener">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -34,7 +35,16 @@
 
   <section class="hero reveal-stagger" style="border-top:none;">
     <div class="eyebrow"><span class="dot"></span> Systems Administration — Network Engineering - IT Support</div>
-    <h1 class="name">Kenneth V. Sarmiento</h1>
+    <div class="hero-top">
+      <h1 class="name">Kenneth V. Sarmiento</h1>
+      <div class="photo-holder">
+        <img id="profile-photo" src="profile.jpg" alt="Portrait of Kenneth V. Sarmiento" onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex';">
+        <div class="photo-placeholder" id="photo-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 20.5c0-4.1 3.4-6.8 7.5-6.8s7.5 2.7 7.5 6.8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <small>Add profile.jpg</small>
+        </div>
+      </div>
+    </div>
     <p class="role">Computer Engineering graduate building practical expertise in Windows Server, Active Directory, and Cisco routing &amp; switching — from home-lab infrastructure to hands-on IT support.</p>
 
     <svg class="signal" viewBox="0 0 800 64" preserveAspectRatio="none" aria-hidden="true">
@@ -166,6 +176,75 @@
       <h3>Cisco Packet Tracer Networking Home Lab</h3>
       <div class="proj-period">2026 – Ongoing</div>
       <p>Configured routers and switches via Cisco IOS CLI with IPv4 addressing, subnetting, VLANs, and static routing. Diagnosed connectivity issues through structured troubleshooting of routing and ARP tables.</p>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="section-head">
+      <h2>Certifications</h2>
+    </div>
+    <div class="cert-layout reveal">
+    <div class="cert-carousel" id="cert-carousel" aria-roledescription="carousel" aria-label="Certifications">
+      <div class="cert-viewport">
+        <div class="cert-track" id="cert-track">
+        <div class="cert-slide">
+          <img src="CCNA-intro .png" alt="Certification 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-placeholder" style="display:none;">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8.5" cy="10" r="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M4 17l5-4.5 3.5 3 3-2.5L20 17" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+            <strong>Certification 1</strong>
+            <small>Add a file named "certs/cert-1.jpg" — a scan or screenshot of your certificate.</small>
+          </div>
+        </div>
+        <div class="cert-slide">
+          <img src="networking basics.png" alt="Certification 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-placeholder" style="display:none;">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8.5" cy="10" r="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M4 17l5-4.5 3.5 3 3-2.5L20 17" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+            <strong>Certification 2</strong>
+            <small>Add a file named "certs/cert-2.jpg" — a scan or screenshot of your certificate.</small>
+          </div>
+        </div>
+        <div class="cert-slide">
+          <img src="HCIA-AI V3.5 Course.png" alt="Certification 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-placeholder" style="display:none;">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8.5" cy="10" r="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M4 17l5-4.5 3.5 3 3-2.5L20 17" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+            <strong>Certification 3</strong>
+            <small>Add a file named "certs/cert-3.jpg" — a scan or screenshot of your certificate.</small>
+          </div>
+        </div>
+        </div>
+        <div class="cert-progress" id="cert-progress" aria-hidden="true"></div>
+      </div>
+      <button class="cert-btn cert-prev" id="cert-prev" aria-label="Previous certification">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="cert-btn cert-next" id="cert-next" aria-label="Next certification">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="cert-count" id="cert-count" aria-live="polite">1 / 3</div>
+    </div>
+    <div class="cert-info" id="cert-info">
+      <div class="cert-desc">
+        <span class="tag">Certification 1</span>
+        <h3>CCNA: Introduction to Networks</h3>
+        <div class="cert-meta">Issuing organization · September 2026</div>
+        <p>Description placeholder — Gained fundamental knowledge of how data moves across local and wide-area networks, IPv4 and IPv6 addressing, and basic device configuration..</p>
+        <div class="stack-line">Credential ID: 2e91db27-673f-46ee-a4be-9f7513496663</div>
+      </div>
+      <div class="cert-desc">
+        <span class="tag">Certification 2</span>
+        <h3>Networking Basics</h3>
+        <div class="cert-meta">Issuing organization · February 2025</div>
+        <p>Description placeholder — Enhanced my knowledge on core concepts in network communication, IP addressing, router interconnectivity, and basic troubleshooting tools.</p>
+        <div class="stack-line">Credential ID: 58532b99-d79a-4507-ac35-27d0ba7d86c7</div>
+      </div>
+      <div class="cert-desc">
+        <span class="tag">Certification 3</span>
+        <h3>HCIA-AI V3.5 Course | Huawei Certified ICT Associate - Artificial Intelligence</h3>
+        <div class="cert-meta">Issuing organization · november 2024</div>
+        <p>Description placeholder — Learned core AI frameworks, algorithms, and application scenarios within cloud and enterprise environments using Huawei technologies.</p>
+        <div class="stack-line">Credential ID: EBG20241114006007</div>
+      </div>
+    </div>
     </div>
   </section>
 
