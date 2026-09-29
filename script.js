@@ -113,3 +113,90 @@
     }
   });
 })();
+
+/* ---------- Certifications carousel ---------- */
+(function () {
+  var track = document.getElementById('cert-track');
+  var prev = document.getElementById('cert-prev');
+  var next = document.getElementById('cert-next');
+  var count = document.getElementById('cert-count');
+  var carousel = document.getElementById('cert-carousel');
+  if (!track || !prev || !next) return;
+
+  var slides = Array.prototype.slice.call(track.children);
+  var total = slides.length;
+  var bar = document.getElementById('cert-progress');
+  var offscreen = true, tabHidden = false;
+  var descs = Array.prototype.slice.call(document.querySelectorAll('#cert-info .cert-desc'));
+  var index = 0;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Autoplay: the progress bar's 5s animation is the timer; when it ends, go to the next slide.
+  function restartTimer() {
+    if (!bar || reduce) return;
+    bar.classList.remove('run');
+    void bar.offsetWidth;
+    bar.classList.add('run');
+  }
+  function syncPause() {
+    carousel.classList.toggle('is-paused', offscreen || tabHidden);
+  }
+  if (bar && !reduce) {
+    bar.addEventListener('animationend', function () { show(index + 1, 1); });
+    document.addEventListener('visibilitychange', function () {
+      tabHidden = document.hidden; syncPause();
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        offscreen = !entries[0].isIntersecting; syncPause();
+      }, { threshold: 0.3 }).observe(carousel);
+    } else {
+      offscreen = false;
+    }
+    syncPause();
+  }
+
+  function show(i, dir) {
+    var nextIndex = (i + total) % total;
+    var incoming = slides[nextIndex];
+    var outgoing = slides[index];
+    dir = dir || 1;
+
+    if (nextIndex !== index && !reduce) {
+      // place the incoming slide just off to the side (no transition), then let it glide in
+      incoming.style.transition = 'none';
+      incoming.style.transform = 'translateX(' + (dir * 7) + '%) scale(.97)';
+      void incoming.offsetWidth;
+      incoming.style.transition = '';
+      incoming.style.transform = '';
+      // outgoing drifts the opposite way while it fades
+      outgoing.style.transform = 'translateX(' + (-dir * 7) + '%) scale(.97)';
+      setTimeout(function () { outgoing.style.transform = ''; }, 600);
+    }
+
+    slides.forEach(function (sl, n) { sl.classList.toggle('is-active', n === nextIndex); });
+    descs.forEach(function (d, n) { d.classList.toggle('is-active', n === nextIndex); });
+    index = nextIndex;
+    count.textContent = (index + 1) + ' / ' + total;
+    restartTimer();
+  }
+
+  prev.addEventListener('click', function () { show(index - 1, -1); });
+  next.addEventListener('click', function () { show(index + 1, 1); });
+
+  carousel.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') show(index - 1, -1);
+    if (e.key === 'ArrowRight') show(index + 1, 1);
+  });
+
+  var startX = null;
+  carousel.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+  carousel.addEventListener('touchend', function (e) {
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+    startX = null;
+  });
+
+  show(0);
+})();
